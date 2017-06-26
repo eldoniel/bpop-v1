@@ -1,0 +1,4 @@
+website:
+    resource: "@WebsiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
