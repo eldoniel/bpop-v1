@@ -3,12 +3,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% stylesheets 'bundles/website/assets/css/*' filter='cssrewrite' %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
     <title>Bienvenue sur ma première page avec OpenClassrooms !</title>
   </head>
   <body>
     <h1>Hello World !</h1>
 
-    <p>
+    <p class="panel panel-default">
       Le Hello World est un grand classique en programmation.
       Il signifie énormément, car cela veut dire que vous avez
       réussi à exécuter le programme pour accomplir une tâche simple :
