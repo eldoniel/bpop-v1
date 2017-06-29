@@ -6,24 +6,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class NewsController extends Controller
+class DatesController extends Controller
 {
   /**
-  * @Route("/news", name="news_index")
+  * @Route("/dates", name="dates_index")
   */
   public function indexAction()
   {
-    return $this->showAction(14);
+    return $this->showAction();
   }
 
   /**
-  * @Route("/news/show", defaults={"id" = 1}, name="news_show")
+  * @Route("/dates/show", name="dates_show")
   */
-  public function showAction($id)
+  public function showAction()
   {
     return $this->render(
-      'WebsiteBundle:News:show.html.twig',
-      array('id' => $id)
+      'WebsiteBundle:Dates:show.html.twig'
     );
   }
 }

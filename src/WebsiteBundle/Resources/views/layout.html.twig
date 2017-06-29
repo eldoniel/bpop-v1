@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% stylesheets 'bundles/website/assets/css/*' filter='cssrewrite' %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <title>B!pop</title>
+  </head>
+  <body>
+
+    <div id="menu">
+      {{ include("WebsiteBundle::menu.html.twig") }}
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+  </body>
+</html>
