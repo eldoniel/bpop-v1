@@ -7,14 +7,22 @@
 
     <title>B!pop</title>
   </head>
-  <body>
+  <body class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      {% image 'bundles/website/assets/img/banniere.png' %}
+        <img src="{{ asset_url }}" class="banniere" />
+      {% endimage %}
 
-    <div id="menu">
-      {{ include("WebsiteBundle::menu.html.twig") }}
+      <div class="col-md-12" id="menu">
+        {{ include("WebsiteBundle::menu.html.twig") }}
+      </div>
+
+      <div class="body">
+        {% block body %}
+        {% endblock %}
+      </div>
     </div>
-
-    {% block body %}
-    {% endblock %}
-
+    <div class="col-md-2"></div>
   </body>
 </html>
