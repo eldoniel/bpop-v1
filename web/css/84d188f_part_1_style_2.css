@@ -2,6 +2,12 @@ body {
   background-color: black;
 }
 
+.banniere {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
 .menu_ul {
   padding:0;
   margin:0;

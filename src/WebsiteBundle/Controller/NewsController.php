@@ -20,13 +20,17 @@ class NewsController extends Controller
   }
 
   /**
-  * @Route("/news/show", defaults={"id" = 1}, name="news_show")
+  * @Route("/news/show", name="news_show")
   */
-  public function showAction($id)
+  public function showAction()
   {
+    $adverts = $this->getDoctrine()
+      ->getRepository('WebsiteBundle:Advert')
+      ->findAll();
+
     return $this->render(
       'WebsiteBundle:News:show.html.twig',
-      array('id' => $id)
+      array('adverts' => $adverts)
     );
   }
 
