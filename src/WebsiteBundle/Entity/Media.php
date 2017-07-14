@@ -3,6 +3,7 @@
 namespace WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Media
@@ -32,6 +33,9 @@ class Media
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Merci d'upload le fichier en mp3")
+     * @Assert\File(mimeTypes={ "audio/mpeg" })
      */
     private $path;
 
@@ -48,6 +52,12 @@ class Media
      * @ORM\Column(name="album", type="string", length=255, nullable=true)
      */
     private $album;
+
+
+    public function __construct()
+    {
+      $this->dateUpload = new \Datetime();
+    }
 
 
     /**
@@ -156,4 +166,3 @@ class Media
         return $this->album;
     }
 }
-
