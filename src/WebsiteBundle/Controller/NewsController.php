@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class NewsController extends Controller
 {
   /**
-  * @Route("/news", name="news_index")
+  * @Route("/", name="news_index")
   */
   public function indexAction()
   {
@@ -24,18 +24,24 @@ class NewsController extends Controller
   */
   public function showAction()
   {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Advert');
+
+    $lastAdvert = $repository->findLastAdvert();
+/*
     $adverts = $this->getDoctrine()
       ->getRepository('WebsiteBundle:Advert')
       ->findAll();
-
+*/
     return $this->render(
       'WebsiteBundle:News:show.html.twig',
-      array('adverts' => $adverts)
+      array('lastAdvert' => $lastAdvert)
     );
   }
 
   /**
-   * @Route(name="news_add")
+   * @Route("/news/add", name="news_add")
    */
   public function addAction(Request $request)
   {

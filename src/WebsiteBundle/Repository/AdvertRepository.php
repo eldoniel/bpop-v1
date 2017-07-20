@@ -10,4 +10,11 @@ namespace WebsiteBundle\Repository;
  */
 class AdvertRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findLastAdvert() {
+    $qb = $this->createQueryBuilder('a');
+    $qb->setMaxResults( 1 );
+    $qb->orderBy('a.date_creation', 'DESC');
+
+    return $qb->getQuery()->getSingleResult();
+  }
 }

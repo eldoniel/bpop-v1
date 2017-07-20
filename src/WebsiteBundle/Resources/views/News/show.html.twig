@@ -10,23 +10,17 @@
     {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
   </div>
 
-  {% for advert in adverts %}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          {{ advert.title }}
-        </h3>
-      </div>
-      <div class="panel-body">
-        {{ advert.content }}
-      </div>
-      <div class="panel-footer">
-        Posté le {{ advert.dateCreation|date('d/m/Y') }} à {{ advert.dateCreation|date('H:m:s') }} par {{ advert.author }}
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        {{ lastAdvert.title }}
+      </h3>
     </div>
-  {% else %}
-    <p class="panel panel-default">
-      Il n'y a pas encore de news à afficher
-    </p>
-  {% endfor %}
+    <div class="panel-body">
+      {{ lastAdvert.content }}
+    </div>
+    <div class="panel-footer">
+      Posté le {{ lastAdvert.dateCreation|date('d/m/Y') }} à {{ lastAdvert.dateCreation|date('H:m:s') }} par {{ lastAdvert.author }}
+    </div>
+  </div>
 {% endblock %}

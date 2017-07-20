@@ -35,7 +35,7 @@ class MediaController extends Controller
   }
 
   /**
-   * @Route(name="media_add")
+   * @Route("/media/add", name="media_add")
    */
   public function addAction(Request $request)
   {
