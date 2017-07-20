@@ -2,10 +2,23 @@ body {
   background-color: black;
 }
 
+.article_title {
+  font-weight: bold;
+}
+
+.article_date {
+  opacity: 60%;
+  font-size: 90%;
+}
+
 .banniere {
   display: block;
   margin-left: auto;
   margin-right: auto
+}
+
+#menu {
+  padding-bottom: 30px;
 }
 
 .menu_ul {
@@ -14,24 +27,23 @@ body {
   list-style-type:none;
 }
 .menu_li {
-  margin-left:2px;
   float:left; /*pour IE*/
 }
 .menu_ul .menu_li .menu_a {
   display:block;
   float:left;
-  width:100px;
   background-color:black;
-  color:green;
+  color: white;
   text-decoration:none;
   text-align:center;
   padding:5px;
-  border:2px solid;
-  /*pour avoir un effet "outset" avec IE :*/
-  border-color:#DCDCDC #696969 #696969 #DCDCDC;
+  font-family: "Stencil Std", "Blippo", fantasy;
+  font-weight: bold;
 }
 .menu_ul .menu_li .menu_a:hover {
-  background-color:green;
-  color: black;
-  border-color:#696969 #DCDCDC #DCDCDC #696969;
+  color: #5DFF44;
+}
+
+.table {
+  color: white;
 }

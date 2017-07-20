@@ -6,10 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class DatesController extends Controller
+class DateController extends Controller
 {
   /**
-  * @Route("/dates", name="dates_index")
+  * @Route("/date", name="date_index")
   */
   public function indexAction()
   {
@@ -17,12 +17,22 @@ class DatesController extends Controller
   }
 
   /**
-  * @Route("/dates/show", name="dates_show")
+  * @Route("/date/show", name="date_show")
   */
   public function showAction()
   {
     return $this->render(
-      'WebsiteBundle:Dates:show.html.twig'
+      'WebsiteBundle:Date:show.html.twig'
+    );
+  }
+
+  /**
+   * @Route("/date/next", name="date_next")
+   */
+  public function nextAction()
+  {
+    return $this->render(
+      'WebsiteBundle:Date:next.html.twig'
     );
   }
 }

@@ -3,24 +3,20 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
-  <h1>News</h1>
-
-  <h4>Ajouter une news</h4>
   <div class="panel panel-default">
     {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        {{ lastAdvert.title }}
-      </h3>
-    </div>
-    <div class="panel-body">
-      {{ lastAdvert.content }}
-    </div>
-    <div class="panel-footer">
-      Posté le {{ lastAdvert.dateCreation|date('d/m/Y') }} à {{ lastAdvert.dateCreation|date('H:m:s') }} par {{ lastAdvert.author }}
-    </div>
-  </div>
+    <table class="table">
+      <tr>
+        <th>Dernière news</th>
+      </tr>
+      <tr>
+        <td>
+          <h4 class="article_title">{{ lastAdvert.title }}</h4>
+          <h5 class="article_date">Le {{ lastAdvert.dateCreation|date('d/m/Y') }}</h5>
+          <p>{{ lastAdvert.content }}</p>
+        </td>
+      </tr>
+    </table>
 {% endblock %}

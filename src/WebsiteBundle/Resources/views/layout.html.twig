@@ -18,9 +18,14 @@
         {{ include("WebsiteBundle::menu.html.twig") }}
       </div>
 
-      <div class="body">
-        {% block body %}
-        {% endblock %}
+      <div class="global-body col-md-12">
+        <div class="body col-md-8">
+          {% block body %}
+          {% endblock %}
+        </div>
+        <div class="side_body col-md-4">
+          {{ render(controller('WebsiteBundle:Date:next')) }}
+        </div>
       </div>
     </div>
     <div class="col-md-2"></div>
