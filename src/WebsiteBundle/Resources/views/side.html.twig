@@ -1,2 +1,26 @@
+<div class="links">
+  {% image 'bundles/website/assets/img/facebook-icon.jpg' %}
+    <a target="_blank" href="https://www.facebook.com/B.popOfficial/">
+      <img src="{{ asset_url }}" alt="Facebook" class="icon" />
+    </a>
+  {% endimage %}
+  {% image 'bundles/website/assets/img/twitter-icon.png' %}
+    <a target="_blank" href="https://twitter.com/BpopBand?lang=fr">
+      <img src="{{ asset_url }}" alt="Twitter" class="icon" />
+    </a>
+  {% endimage %}
+  {% image 'bundles/website/assets/img/soundcloud-icon.png' %}
+    <a target="_blank" href="https://soundcloud.com/bpopofficial">
+      <img src="{{ asset_url }}" alt="Soundcloud" class="icon" />
+    </a>
+  {% endimage %}
+  {% image 'bundles/website/assets/img/youtube-icon.jpg' %}
+    <a target="_blank" href="https://www.youtube.com/channel/UC5ipK4LDLoNpDvgJglUOOkw">
+      <img src="{{ asset_url }}" alt="Youtube" class="icon" />
+    </a>
+  {% endimage %}
+</div>
+
 {{ render(controller('WebsiteBundle:Date:next')) }}
+
 {{ render(controller('WebsiteBundle:Media:latest')) }}
