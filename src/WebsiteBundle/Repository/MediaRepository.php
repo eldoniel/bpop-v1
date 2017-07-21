@@ -10,4 +10,11 @@ namespace WebsiteBundle\Repository;
  */
 class MediaRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findLastMedia() {
+    $qb = $this->createQueryBuilder('m');
+    $qb->setMaxResults( 1 );
+    $qb->orderBy('m.dateUpload', 'DESC');
+
+    return $qb->getQuery()->getSingleResult();
+  }
 }

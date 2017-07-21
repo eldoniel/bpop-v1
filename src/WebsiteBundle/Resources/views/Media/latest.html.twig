@@ -1,0 +1,21 @@
+<table class="table">
+  <tr>
+    <th>Dernière piste en ligne</th>
+  </tr>
+  {% if media %}
+    <tr>
+      <td>
+        <h4 class="article_title">{{ media.title }}</h4>
+        <audio controls class="side_audio">
+          <source src="{{ asset('audio/' ~ media.path) }}" type="audio/mpeg" >
+        </audio>
+      </td>
+    </tr>
+  {% else %}
+    <tr>
+      <td>
+        Il n'y a aucune piste en ligne pour le moment.
+      </td>
+    </tr>
+  {% endif %}
+</table>

@@ -6799,7 +6799,11 @@ body {
   font-weight: bold;
 }
 .menu_ul .menu_li .menu_a:hover {
-  color: #5DFF44;
+  color: #1EE600;
+}
+
+.side_audio {
+  width: 100%;
 }
 
 .table {

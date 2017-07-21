@@ -44,6 +44,10 @@ body {
   color: #1EE600;
 }
 
+.side_audio {
+  width: 100%;
+}
+
 .table {
   color: white;
 }

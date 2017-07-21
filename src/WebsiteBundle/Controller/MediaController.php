@@ -35,6 +35,22 @@ class MediaController extends Controller
   }
 
   /**
+   * @Route("/media/latest", name="media_latest")
+   */
+  public function latestAction()
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Media');
+
+    $media = $repository->findLastMedia();
+
+    return $this->render(
+      'WebsiteBundle:Media:latest.html.twig',
+      array('media' => $media));
+  }
+
+  /**
    * @Route("/media/add", name="media_add")
    */
   public function addAction(Request $request)
