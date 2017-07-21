@@ -1,4 +1,5 @@
 bpop-v1
 =======
 
-A Symfony project created on June 26, 2017, 8:29 am.
+Un projet Symfony créé le 26 juin 2017 à 8h29.
+Il s'agit de la V1 du site internet de B!pop.
