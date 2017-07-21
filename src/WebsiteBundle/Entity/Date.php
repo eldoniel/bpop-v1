@@ -38,9 +38,16 @@ class Date
     /**
      * @var string
      *
-     * @ORM\Column(name="location", type="string", length=255)
+     * @ORM\Column(name="room", type="string", length=255, nullable=true)
      */
-    private $location;
+    private $room;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    private $city;
 
 
     /**
@@ -102,27 +109,50 @@ class Date
     }
 
     /**
-     * Set location
+     * Set room
      *
-     * @param string $location
+     * @param string $room
      *
      * @return Date
      */
-    public function setLocation($location)
+    public function setRoom($room)
     {
-        $this->location = $location;
+        $this->room = $room;
 
         return $this;
     }
 
     /**
-     * Get location
+     * Get room
      *
      * @return string
      */
-    public function getLocation()
+    public function getRoom()
     {
-        return $this->location;
+        return $this->room;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return Date
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }
-

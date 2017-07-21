@@ -1,11 +1,24 @@
-
-  <table class="table">
-    <tr>
-      <th>Prochaine date</th>
-    </tr>
+<table class="table">
+  <tr>
+    <th>Prochaines dates</th>
+  </tr>
+  {% for date in dates %}
     <tr>
       <td>
-        Le 5 aout à Saillans (Drôme)
+        <h4 class="article_title">{{ date.eventName }}</h4>
+        <span>Le {{ date.dateShow|date('d/m/Y') }}
+        à {{ date.dateShow|date('H:i:s') }},
+        {% if date.room %}
+          {{ date.room }},
+        {% endif %}
+        {{ date.city }}</span>
       </td>
     </tr>
-  </table>
+  {% else %}
+    <tr>
+      <td>
+        Il n'y a aucune date prévue pour le moment.
+      </td>
+    </tr>
+  {% endfor %}
+</table>
