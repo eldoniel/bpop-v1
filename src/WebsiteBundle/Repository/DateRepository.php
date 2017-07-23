@@ -30,6 +30,6 @@ class DateRepository extends \Doctrine\ORM\EntityRepository
   public function findThreeNextDates() {
     $qb = $this->findUpcomingDatesQuery();
 
-    return $qb->getQuery()->setMaxResults(3)->getResult();
+    return $qb->getQuery()->setMaxResults(2)->getResult();
   }
 }

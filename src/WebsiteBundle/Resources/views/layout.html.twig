@@ -8,20 +8,57 @@
     <title>B!pop</title>
   </head>
   <body class="col-md-12">
+    <div id="fb-root"></div>
+    <!-- SCRIPT FACEBOOK -->
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- SCRIPT TWITTER -->
+    <script>window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));</script>
+    <!-- SCRIPT YOUTUBE -->
+    <script src="https://apis.google.com/js/platform.js"></script>
+
     <div class="col-md-3"></div>
     <div class="col-md-6">
+      <div class="col-md-12" id="menu">
+        <div class="col-md-8">
+          {{ include("WebsiteBundle::menu.html.twig") }}
+        </div>
+        <div class="col-md-4">
+          {{ include("WebsiteBundle::links.html.twig") }}
+        </div>
+      </div>
+
       {% image 'bundles/website/assets/img/banniere.png' %}
         <img src="{{ asset_url }}" class="banniere" />
       {% endimage %}
 
-      <div class="col-md-12" id="menu">
-        {{ include("WebsiteBundle::menu.html.twig") }}
-      </div>
-
       <div class="global-body col-md-12">
         <div class="body col-md-8">
-          {% block body %}
-          {% endblock %}
+          <div class="content">
+            {% block body %}
+            {% endblock %}
+          </div>
         </div>
         <div class="side_body col-md-4">
           {{ include("WebsiteBundle::side.html.twig") }}
