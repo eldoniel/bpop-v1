@@ -7,16 +7,20 @@
     {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
   </div>
 
-    <table class="table">
-      <tr>
-        <th>Dernière news</th>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="article_title">{{ lastAdvert.title }}</h4>
-          <h5 class="article_date">Le {{ lastAdvert.dateCreation|date('d/m/Y') }}</h5>
-          <p>{{ lastAdvert.content }}</p>
-        </td>
-      </tr>
-    </table>
+  <iframe width="500" height="315"
+    src="https://www.youtube.com/embed/aCiZ5f0QMpg">
+  </iframe>
+
+  <table class="table">
+    <tr>
+      <th>Dernière news</th>
+    </tr>
+    <tr>
+      <td>
+        <h4 class="article_title">{{ lastAdvert.title }}</h4>
+        <h5 class="article_date">Le {{ lastAdvert.dateCreation|date('d/m/Y') }}</h5>
+        <p>{{ lastAdvert.content }}</p>
+      </td>
+    </tr>
+  </table>
 {% endblock %}
