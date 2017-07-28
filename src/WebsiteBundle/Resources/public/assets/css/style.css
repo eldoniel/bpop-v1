@@ -29,10 +29,6 @@ body {
   margin: 5px;
 }
 
-#menu {
-  padding-bottom: 30px;
-}
-
 .menu_ul {
   padding:0;
   margin:0;
@@ -40,6 +36,7 @@ body {
 }
 .menu_li {
   float:left; /*pour IE*/
+  text-align: center;
 }
 .menu_ul .menu_li .menu_a {
   display:block;
