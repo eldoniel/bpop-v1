@@ -36,7 +36,7 @@ class SubscriptionController extends Controller
   {
     $subscription = new Subscription();
 
-    $form = $this->createForm(SubscriptionType::class, $subscription);
+    $form = $this->createForm(SubscriptionType::class, $subscription, array('action' => $this->generateUrl('subscription_add')));
 
     if ($request->isMethod('POST')) {
       $form->handleRequest($request);
