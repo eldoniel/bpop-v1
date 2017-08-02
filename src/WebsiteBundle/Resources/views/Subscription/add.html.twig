@@ -1,3 +1,37 @@
 <div class="add_subscription">
-  {{ form(form) }}
+  <table class="table">
+    <tr>
+      <th>M'abonner</th>
+    </tr>
+    <tr>
+      <td>
+        {{ form_start(form, {'attr':{class: 'form-custom'}}) }}
+        {{ form_errors(form) }}
+        <div class="form-group col-sm-12">
+          {{ form_label(form.mail, "Mail: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.mail) }}
+          {{ form_widget(form.mail, {'attr': {'class': 'col-sm-9'}}) }}
+        </div>
+        Cochez les cases pour recevoir une alerte dans les catégories suivantes:
+        <div class="form-group col-sm-12">
+          {{ form_label(form.news, "News: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.news) }}
+          {{ form_widget(form.news, {'attr': {'class': 'col-sm-9'}}) }}
+        </div>
+        <div class="form-group col-sm-12">
+          {{ form_label(form.dates, "Dates: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.dates) }}
+          {{ form_widget(form.dates, {'attr': {'class': 'col-sm-9'}}) }}
+        </div>
+        <div class="form-group col-sm-12">
+          {{ form_label(form.music, "Music: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.music) }}
+          {{ form_widget(form.music, {'attr': {'class': 'col-sm-9'}}) }}
+        </div>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+      </td>
+    </tr>
+  </table>
 </div>

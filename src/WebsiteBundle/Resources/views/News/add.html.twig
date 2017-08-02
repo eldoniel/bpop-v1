@@ -1,3 +1,26 @@
 <div class="add_news">
-  {{ form(form) }}
+  <table class="table">
+    <tr>
+      <th>Ajouter une news</th>
+    </tr>
+    <tr>
+      <td>
+        {{ form_start(form, {'attr':{class: 'form-custom'}}) }}
+        {{ form_errors(form) }}
+        <div class="form-group">
+          {{ form_label(form.title, "Titre: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.title) }}
+          {{ form_widget(form.title, {'attr': {'class': 'col-sm-9'}}) }}
+        </div>
+        <div class="form-group">
+          {{ form_label(form.content, "Contenu: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.content) }}
+          {{ form_widget(form.content, {'attr': {'class': 'col-sm-9'}}) }}
+        </div>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+      </td>
+    </tr>
+  </table>
 </div>

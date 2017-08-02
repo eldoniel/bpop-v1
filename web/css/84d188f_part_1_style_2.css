@@ -19,6 +19,10 @@ body {
   width: auto;
 }
 
+.form-custom {
+  background-color: black;
+}
+
 .icon {
   height: 40px;
   width: 40px;

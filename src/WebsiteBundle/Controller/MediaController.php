@@ -83,7 +83,7 @@ class MediaController extends Controller
       }
     }
 
-    return $this->render('WebsiteBundle:News:add.html.twig', array(
+    return $this->render('WebsiteBundle:Media:add.html.twig', array(
       'form' => $form->createView(),
     ));
   }
