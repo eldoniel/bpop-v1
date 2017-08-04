@@ -10,7 +10,7 @@
         <div class="form-group col-sm-12">
           {{ form_label(form.mail, "Mail: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.mail) }}
-          {{ form_widget(form.mail, {'attr': {'class': 'col-sm-9'}}) }}
+          {{ form_widget(form.mail, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
         Cochez les cases pour recevoir une alerte dans les catégories suivantes:
         <div class="form-group col-sm-12">
@@ -28,7 +28,9 @@
           {{ form_errors(form.music) }}
           {{ form_widget(form.music, {'attr': {'class': 'col-sm-9'}}) }}
         </div>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        <div class="col-sm-12">
+          {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
         {{ form_rest(form) }}
         {{ form_end(form) }}
       </td>

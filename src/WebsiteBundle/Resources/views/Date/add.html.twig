@@ -10,7 +10,7 @@
         <div class="form-group col-sm-12">
           {{ form_label(form.eventName, "Nom événement: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.eventName) }}
-          {{ form_widget(form.eventName, {'attr': {'class': 'col-sm-9'}}) }}
+          {{ form_widget(form.eventName, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
         <div class="form-group col-sm-12">
           {{ form_label(form.dateShow, "Date: ", {'label_attr': {'class': 'col-sm-3'}}) }}
@@ -20,14 +20,16 @@
         <div class="form-group col-sm-12">
           {{ form_label(form.room, "Salle: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.room) }}
-          {{ form_widget(form.room, {'attr': {'class': 'col-sm-9'}}) }}
+          {{ form_widget(form.room, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
         <div class="form-group col-sm-12">
           {{ form_label(form.city, "Ville: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.city) }}
-          {{ form_widget(form.city, {'attr': {'class': 'col-sm-9'}}) }}
+          {{ form_widget(form.city, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        <div class="col-sm-12">
+          {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
         {{ form_rest(form) }}
         {{ form_end(form) }}
       </td>

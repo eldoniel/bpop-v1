@@ -46,6 +46,25 @@ class SubscriptionController extends Controller
         $em->persist($subscription);
         $em->flush();
 
+        $message = (new \Swift_Message('Confirmation de votre inscription à la newsletter'))
+          ->setFrom('bpop.website@gmail.com')
+          ->setTo($subscription->getMail())
+          ->setBody(
+            $this->renderView(
+              // app/Resources/views/Emails/registration.html.twig
+              'WebsiteBundle:Emails:subscription.html.twig',
+              array(
+                'news' => $subscription->getNews(),
+                'music' => $subscription->getMusic(),
+                'dates' => $subscription->getDates()
+                )
+            ),
+            'text/html'
+          )
+        ;
+
+          $this->get('mailer')->send($message);
+
         return $this->redirectToRoute('news_index');
       }
     }
@@ -53,5 +72,21 @@ class SubscriptionController extends Controller
     return $this->render('WebsiteBundle:Subscription:add.html.twig', array(
       'form' => $form->createView(),
     ));
+  }
+
+  private function sendMail($mail, $mailer)
+  {
+    $message = (new \Swift_Message('Hello Email'))
+        ->setFrom('bpop@noreply.com')
+        ->setTo($mail)
+        ->setBody(
+            $this->renderView(
+                "Ceci est le premier mail de test!"
+            ),
+            'text/html'
+        )
+    ;
+
+    $mailer->send($message);
   }
 }

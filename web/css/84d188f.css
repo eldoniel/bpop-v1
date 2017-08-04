@@ -6822,3 +6822,7 @@ body {
 .table {
   color: white;
 }
+
+.text_inputs {
+  background-color: black;
+}

@@ -10,14 +10,16 @@
         <div class="form-group">
           {{ form_label(form.title, "Titre: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.title) }}
-          {{ form_widget(form.title, {'attr': {'class': 'col-sm-9'}}) }}
+          {{ form_widget(form.title, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
         <div class="form-group">
           {{ form_label(form.content, "Contenu: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.content) }}
-          {{ form_widget(form.content, {'attr': {'class': 'col-sm-9'}}) }}
+          {{ form_widget(form.content, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        <div class="col-sm-12">
+          {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
         {{ form_rest(form) }}
         {{ form_end(form) }}
       </td>
