@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use WebsiteBundle\Entity\Media;
+use WebsiteBundle\Entity\ScPlaylist;
 use WebsiteBundle\Form\MediaType;
+use WebsiteBundle\Form\ScPlaylistType;
 
 class MediaController extends Controller
 {
@@ -24,13 +26,21 @@ class MediaController extends Controller
   */
   public function showAction()
   {
-    $medias = $this->getDoctrine()
+/*    $medias = $this->getDoctrine()
       ->getRepository('WebsiteBundle:Media')
       ->findAll();
 
     return $this->render(
       'WebsiteBundle:Media:show.html.twig',
       array('medias' => $medias)
+    );*/
+    $scPlaylists = $this->getDoctrine()
+      ->getRepository('WebsiteBundle:ScPlaylist')
+      ->findAll();
+
+    return $this->render(
+      'WebsiteBundle:Media:show.html.twig',
+      array('scPlaylists' => $scPlaylists)
     );
   }
 
@@ -93,35 +103,23 @@ class MediaController extends Controller
    */
   public function addScPlaylistAction(Request $request)
   {
-    $media = new Media();
+    $scPlaylist = new ScPlaylist();
 
-    $form = $this->createForm(MediaType::class, $media, array('action' => $this->generateUrl('media_add')));
+    $form = $this->createForm(ScPlaylistType::class, $scPlaylist, array('action' => $this->generateUrl('media_add_sc_playlist')));
 
     if ($request->isMethod('POST')) {
       $form->handleRequest($request);
 
       if ($form->isValid()) {
-        $file = $media->getPath();
-
-        //$fileName = md5(uniqid()).'.'.$file->guessExtension();
-        $fileName = md5(uniqid()).".mp3";
-
-        $file->move(
-          $this->getParameter('media_directory'),
-          $fileName
-        );
-
-        $media->setPath($fileName);
-
         $em = $this->getDoctrine()->getManager();
-        $em->persist($media);
+        $em->persist($scPlaylist);
         $em->flush();
 
         return $this->redirectToRoute('media_index');
       }
     }
 
-    return $this->render('WebsiteBundle:Media:add.html.twig', array(
+    return $this->render('WebsiteBundle:Media:addScPlaylist.html.twig', array(
       'form' => $form->createView(),
     ));
   }
