@@ -87,4 +87,42 @@ class MediaController extends Controller
       'form' => $form->createView(),
     ));
   }
+
+  /**
+   * @Route("/media/addScPlaylist", name="media_add_sc_playlist")
+   */
+  public function addScPlaylistAction(Request $request)
+  {
+    $media = new Media();
+
+    $form = $this->createForm(MediaType::class, $media, array('action' => $this->generateUrl('media_add')));
+
+    if ($request->isMethod('POST')) {
+      $form->handleRequest($request);
+
+      if ($form->isValid()) {
+        $file = $media->getPath();
+
+        //$fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $fileName = md5(uniqid()).".mp3";
+
+        $file->move(
+          $this->getParameter('media_directory'),
+          $fileName
+        );
+
+        $media->setPath($fileName);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($media);
+        $em->flush();
+
+        return $this->redirectToRoute('media_index');
+      }
+    }
+
+    return $this->render('WebsiteBundle:Media:add.html.twig', array(
+      'form' => $form->createView(),
+    ));
+  }
 }

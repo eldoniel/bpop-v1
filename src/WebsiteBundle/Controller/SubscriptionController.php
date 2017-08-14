@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
           )
         ;
 
-          $this->get('mailer')->send($message);
+        $this->get('mailer')->send($message);
 
         return $this->redirectToRoute('news_index');
       }

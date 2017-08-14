@@ -70,6 +70,27 @@ class DateController extends Controller
          $em->persist($date);
          $em->flush();
 
+         $listSubscribers = $this->getSubscribers();
+
+         foreach ($listSubscribers as $subscriber) {
+           $message = (new \Swift_Message('Nouvelle date B!pop !'))
+             ->setFrom('bpop.website@gmail.com')
+             ->setTo($subscriber->getMail())
+             ->setBody(
+               $this->renderView(
+                 // app/Resources/views/Emails/registration.html.twig
+                 'WebsiteBundle:Emails:newsletter.html.twig',
+                 array(
+                   'type' => 'dates'
+                   )
+               ),
+               'text/html'
+             )
+           ;
+
+           $this->get('mailer')->send($message);
+         }
+
          return $this->redirectToRoute('date_index');
        }
      }
@@ -77,5 +98,17 @@ class DateController extends Controller
      return $this->render('WebsiteBundle:Date:add.html.twig', array(
        'form' => $form->createView(),
      ));
+   }
+
+   public function getSubscribers() {
+     $repository = $this->getDoctrine()
+       ->getManager()
+       ->getRepository('WebsiteBundle:Subscription');
+
+     $listSubscribers = $repository->findBy(
+       array('dates' => 1)
+     );
+
+     return $listSubscribers;
    }
 }

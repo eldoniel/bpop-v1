@@ -57,6 +57,27 @@ class NewsController extends Controller
         $em->persist($advert);
         $em->flush();
 
+        $listSubscribers = $this->getSubscribers();
+
+        foreach ($listSubscribers as $subscriber) {
+          $message = (new \Swift_Message('Nouvelle news B!pop !'))
+            ->setFrom('bpop.website@gmail.com')
+            ->setTo($subscriber->getMail())
+            ->setBody(
+              $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'WebsiteBundle:Emails:newsletter.html.twig',
+                array(
+                  'type' => 'news'
+                  )
+              ),
+              'text/html'
+            )
+          ;
+
+          $this->get('mailer')->send($message);
+        }
+
         return $this->redirectToRoute('news_index');
       }
     }
@@ -64,5 +85,17 @@ class NewsController extends Controller
     return $this->render('WebsiteBundle:News:add.html.twig', array(
       'form' => $form->createView(),
     ));
+  }
+
+  public function getSubscribers() {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Subscription');
+
+    $listSubscribers = $repository->findBy(
+      array('news' => 1)
+    );
+
+    return $listSubscribers;
   }
 }
