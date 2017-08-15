@@ -10,4 +10,11 @@ namespace WebsiteBundle\Repository;
  */
 class ScPlaylistRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findThreeLastPlaylists() {
+    $qb = $this->createQueryBuilder('s');
+    $qb->setMaxResults( 3 );
+    $qb->orderBy('s.id', 'DESC');
+
+    return $qb->getQuery()->getResult();
+  }
 }

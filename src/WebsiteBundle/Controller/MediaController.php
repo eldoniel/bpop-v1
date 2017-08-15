@@ -38,6 +38,12 @@ class MediaController extends Controller
       ->getRepository('WebsiteBundle:ScPlaylist')
       ->findAll();
 
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:ScPlaylist');
+
+    $scPlaylists = $repository->findThreeLastPlaylists();
+
     return $this->render(
       'WebsiteBundle:Media:show.html.twig',
       array('scPlaylists' => $scPlaylists)
@@ -115,6 +121,27 @@ class MediaController extends Controller
         $em->persist($scPlaylist);
         $em->flush();
 
+        $listSubscribers = $this->getSubscribers();
+
+        foreach ($listSubscribers as $subscriber) {
+          $message = (new \Swift_Message('Nouvelle playlist B!pop !'))
+            ->setFrom('bpop.website@gmail.com')
+            ->setTo($subscriber->getMail())
+            ->setBody(
+              $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'WebsiteBundle:Emails:newsletter.html.twig',
+                array(
+                  'type' => 'music'
+                )
+              ),
+              'text/html'
+            )
+          ;
+
+          $this->get('mailer')->send($message);
+        }
+
         return $this->redirectToRoute('media_index');
       }
     }
@@ -122,5 +149,17 @@ class MediaController extends Controller
     return $this->render('WebsiteBundle:Media:addScPlaylist.html.twig', array(
       'form' => $form->createView(),
     ));
+  }
+
+  public function getSubscribers() {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Subscription');
+
+    $listSubscribers = $repository->findBy(
+      array('music' => 1)
+    );
+
+    return $listSubscribers;
   }
 }
