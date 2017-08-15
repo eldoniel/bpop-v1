@@ -6777,6 +6777,10 @@ body {
   width: auto;
 }
 
+.date_inputs {
+  color: black;
+}
+
 .form-custom {
   background-color: black;
 }
