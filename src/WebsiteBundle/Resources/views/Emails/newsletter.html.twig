@@ -9,7 +9,17 @@ Hello, B!popper!<br/><br/>
 {% if type == 'dates' %}
   Une nouvelle date
 {% endif %}
-est en ligne sur le site de B!pop ! Venez vite jeter un coup d'oeil!<br/>
+est en ligne sur le site de B!pop ! Pour la voir, cliquez
+{% if type == 'news' %}
+  <a href="{{ url('news_index') }}">ici</a>
+{% endif %}
+{% if type == 'music' %}
+  <a href="{{ url('media_index') }}">ici</a>
+{% endif %}
+{% if type == 'dates' %}
+  <a href="{{ url('date_index') }}">ici</a>
+{% endif %}
+!<br/>
 
 A très bientôt sur le site,<br/>
 B!pop
