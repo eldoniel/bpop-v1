@@ -8,6 +8,11 @@ login:
     defaults:
         _controller: UserBundle:Security:login
 
+subscribe:
+    path: /subscribe
+    defaults:
+        _controller: UserBundle:Security:subscribe
+
 login_check:
     path: /login_check
 
