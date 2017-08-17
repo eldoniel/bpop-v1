@@ -6778,6 +6778,10 @@ body {
   width: auto;
 }
 
+.container {
+  max-width: 1100px;
+}
+
 .content {
   margin: 5px;
 }
@@ -6819,9 +6823,28 @@ body {
   padding:5px;
   font-family: "Stencil Std", "Blippo", fantasy;
   font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.5s;
 }
 .menu_ul .menu_li .menu_a:hover {
   color: #1EE600;
+}
+
+.pictured_link {
+  position:relative;
+}
+
+.pictured_link img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.pictured_link img.icon_top:hover {
+  opacity:0;
 }
 
 .side_audio {
