@@ -20,12 +20,32 @@
         <div class="form-group col-sm-12">
           {{ form_label(form.room, "Salle: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.room) }}
-          {{ form_widget(form.room, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
+          {{ form_widget(form.room, {'attr': {'class': 'col-sm-5 text_inputs'}}) }}
         </div>
         <div class="form-group col-sm-12">
           {{ form_label(form.city, "Ville: ", {'label_attr': {'class': 'col-sm-3'}}) }}
           {{ form_errors(form.city) }}
-          {{ form_widget(form.city, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
+          {{ form_widget(form.city, {'attr': {'class': 'col-sm-5 text_inputs'}}) }}
+        </div>
+        <div class="form-group col-sm-12">
+          {{ form_label(form.poster, "Affiche: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.poster) }}
+          {{ form_widget(form.poster, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
+        </div>
+        <div class="form-group col-sm-12">
+          {{ form_label(form.otherBands, "Autres groupes: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.otherBands) }}
+          {{ form_widget(form.otherBands, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
+        </div>
+        <div class="form-group col-sm-12">
+          {{ form_label(form.price, "Prix: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.price) }}
+          {{ form_widget(form.price, {'attr': {'class': 'col-sm-2 text_inputs'}}) }}
+        </div>
+        <div class="form-group col-sm-12">
+          {{ form_label(form.sellersLink, "Billetterie: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.sellersLink) }}
+          {{ form_widget(form.sellersLink, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
         </div>
         <div class="col-sm-12">
           {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}

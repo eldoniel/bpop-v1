@@ -10,6 +10,7 @@ imports:
 parameters:
     locale: en
     media_directory: '%kernel.project_dir%/web/audio'
+    image_directory: '%kernel.project_dir%/web/images'
 
 framework:
     #esi: ~

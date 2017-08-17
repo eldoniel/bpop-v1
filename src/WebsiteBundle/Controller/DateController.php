@@ -66,6 +66,18 @@ class DateController extends Controller
        $form->handleRequest($request);
 
        if ($form->isValid()) {
+         $file = $date->getPoster();
+
+         //$fileName = md5(uniqid()).'.'.$file->guessExtension();
+         $fileName = md5(uniqid()).".jpg";
+
+         $file->move(
+           $this->getParameter('image_directory'),
+           $fileName
+         );
+
+         $date->setPoster($fileName);
+
          $em = $this->getDoctrine()->getManager();
          $em->persist($date);
          $em->flush();

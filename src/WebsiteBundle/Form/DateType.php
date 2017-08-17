@@ -5,6 +5,7 @@ namespace WebsiteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,13 +19,23 @@ class DateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-          ->add('eventName', TextType::class)
-          ->add('dateShow',  DateTimeType::class)
-          ->add('room',      TextType::class, array(
+          ->add('eventName',    TextType::class)
+          ->add('dateShow',     DateTimeType::class)
+          ->add('room',         TextType::class, array(
             'required' => false,
           ))
-          ->add('city',      TextType::class)
-          ->add('save',      SubmitType::class)
+          ->add('city',         TextType::class)
+          ->add('poster')
+          ->add('otherBands',   TextType::class, array(
+            'required' => false,
+          ))
+          ->add('price',        MoneyType::class, array(
+            'required' => false,
+          ))
+          ->add('sellersLink',  TextType::class, array(
+            'required' => false,
+          ))
+          ->add('save',         SubmitType::class)
         ;
     }
 

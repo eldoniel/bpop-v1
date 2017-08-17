@@ -16,13 +16,32 @@
     {% for date in dates %}
       <tr>
         <td>
-          <h4 class="article_title">{{ date.eventName }}</h4>
-          <span>Date: {{ date.dateShow|date('d/m/Y') }}</span>
-          <span>Heure de début: {{ date.dateShow|date('H:i:s') }}</span>
-          <span>Ville: {{ date.city }}</span>
-          {% if date.room %}
-            <span>Salle: {{ date.room }}
-          {% endif %}
+          <div class="col-sm-4">
+            {% if date.poster %}
+              <center>
+                <img src="{{ asset('images/' ~ date.poster) }}" style="max-width: 250px; max-height: 170px;">
+              </center>
+            {% endif %}
+          </div>
+          <div class="col-sm-6">
+            <h4 class="article_title">{{ date.eventName }}</h4>
+              Date: {{ date.dateShow|date('d/m/Y') }}<br/>
+              Heure de début: {{ date.dateShow|date('H:i:s') }}<br/>
+              Ville: {{ date.city }}<br/>
+              {% if date.room %}
+                <span>Salle: {{ date.room }}<br/>
+              {% endif %}
+              {% if date.otherBands %}
+                Avec: {{ date.otherBands }}<br/>
+              {% endif %}
+              {% if date.price %}
+                Tarif: {{ date.price }} €<br/>
+              {% endif %}
+              {% if date.sellersLink %}
+                <a target="_blank" href="{{ date.sellersLink }}">Billetterie</a><br/>
+              {% endif %}
+          </div>
+          <div class="col-sm-2"></div>
         </td>
       </tr>
     {% else %}

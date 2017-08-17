@@ -3,6 +3,15 @@ body {
   min-width: 900px;
 }
 
+a {
+  color: #16AF00;
+}
+
+a:hover {
+  color: #1EE600;
+  text-decoration: none;
+}
+
 .article_title {
   font-weight: bold;
 }
