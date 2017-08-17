@@ -6758,6 +6758,7 @@ button.close {
 
 body {
   background-color: black;
+  min-width: 900px;
 }
 
 .article_title {
@@ -6775,6 +6776,10 @@ body {
   margin-right: auto;
   height: 300px;
   width: auto;
+}
+
+.content {
+  margin: 5px;
 }
 
 .date_inputs {
