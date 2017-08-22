@@ -83,18 +83,18 @@ class DateController extends Controller
          $em->flush();
 
          $listSubscribers = $this->getSubscribers();
+         $date_show = $date->getDateShow()->format('d/m/Y');
+         $date_location = $date->getCity();
 
          foreach ($listSubscribers as $subscriber) {
-           $message = (new \Swift_Message('Nouvelle date B!pop !'))
+           $message = (new \Swift_Message('B!pop à ' . $date_location . ' le ' . $date_show . '!'))
              ->setFrom('bpop.website@gmail.com')
              ->setTo($subscriber->getMail())
              ->setBody(
                $this->renderView(
-                 // app/Resources/views/Emails/registration.html.twig
-                 'WebsiteBundle:Emails:newsletter.html.twig',
-                 array(
-                   'type' => 'dates'
-                   )
+                 'WebsiteBundle:Emails:newdate.html.twig', array(
+                     'date' => $date
+                 )
                ),
                'text/html'
              )

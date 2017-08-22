@@ -6,18 +6,12 @@ Hello, B!popper!<br/><br/>
 {% if type == 'music' %}
   Une nouvelle playlist
 {% endif %}
-{% if type == 'dates' %}
-  Une nouvelle date
-{% endif %}
 est en ligne sur le site de B!pop ! Pour la voir, cliquez
 {% if type == 'news' %}
   <a href="{{ url('news_index') }}">ici</a>
 {% endif %}
 {% if type == 'music' %}
   <a href="{{ url('media_index') }}">ici</a>
-{% endif %}
-{% if type == 'dates' %}
-  <a href="{{ url('date_index') }}">ici</a>
 {% endif %}
 !<br/>
 
