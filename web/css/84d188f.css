@@ -6761,15 +6761,6 @@ body {
   min-width: 900px;
 }
 
-a {
-  color: #16AF00;
-}
-
-a:hover {
-  color: #1EE600;
-  text-decoration: none;
-}
-
 .article_title {
   font-weight: bold;
 }
@@ -6866,4 +6857,13 @@ a:hover {
 
 .text_inputs {
   background-color: black;
+}
+
+.text-link {
+  color: #16AF00;
+}
+
+.text-link:hover {
+  color: #1EE600;
+  text-decoration: none;
 }
