@@ -31,7 +31,7 @@ security:
                 check_path: login_check
             logout:
                 path:   logout
-                target: login
+                target: news_index
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
