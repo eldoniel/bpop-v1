@@ -4,14 +4,18 @@
 
 {% block body %}
   {% if app.user %}
-    <div class="add_form">
-      {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
+    <div class="col-sm-12">
+        <div class="add_form col-sm-5">
+          {{ render(controller('WebsiteBundle:Video:add', { 'request': app.request })) }}
+        </div>
+
+        <div class="add_form col-sm-7">
+          {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
+        </div>
     </div>
   {% endif %}
-
-  <iframe width=100% height="315" frameborder="0"
-    src="https://www.youtube.com/embed/aCiZ5f0QMpg">
-  </iframe>
+  
+  {{ render(controller('WebsiteBundle:Video:show')) }}
 
   <table class="table">
     <tr>

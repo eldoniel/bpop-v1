@@ -1,0 +1,25 @@
+<div class="add_video">
+  <table class="table">
+    <tr>
+      <th class="col-sm-12">
+        <span>Ajouter une video</span>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        {{ form_start(form, {'attr':{class: 'form-custom'}}) }}
+        {{ form_errors(form) }}
+        <div class="form-group">
+          {{ form_label(form.link, "Lien: ", {'label_attr': {'class': 'col-sm-3'}}) }}
+          {{ form_errors(form.link) }}
+          {{ form_widget(form.link, {'attr': {'class': 'col-sm-9 text_inputs'}}) }}
+        </div>
+        <div class="col-sm-12">
+          {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+      </td>
+    </tr>
+  </table>
+</div>
