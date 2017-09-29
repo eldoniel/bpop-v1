@@ -26,18 +26,6 @@ class MediaController extends Controller
   */
   public function showAction()
   {
-/*    $medias = $this->getDoctrine()
-      ->getRepository('WebsiteBundle:Media')
-      ->findAll();
-
-    return $this->render(
-      'WebsiteBundle:Media:show.html.twig',
-      array('medias' => $medias)
-    );*/
-    $scPlaylists = $this->getDoctrine()
-      ->getRepository('WebsiteBundle:ScPlaylist')
-      ->findAll();
-
     $repository = $this->getDoctrine()
       ->getManager()
       ->getRepository('WebsiteBundle:ScPlaylist');
@@ -64,6 +52,22 @@ class MediaController extends Controller
     return $this->render(
       'WebsiteBundle:Media:latest.html.twig',
       array('media' => $media));
+  }
+
+  /**
+   * @Route("/media/latestScPlaylist", name="media_latest_sc_playlist")
+   */
+  public function latestScPlaylistAction()
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:ScPlaylist');
+
+    $playlist = $repository->findLastPlaylist();
+
+    return $this->render(
+      'WebsiteBundle:Media:latest.html.twig',
+      array('playlist' => $playlist));
   }
 
   /**

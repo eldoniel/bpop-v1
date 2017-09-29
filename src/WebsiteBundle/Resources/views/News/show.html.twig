@@ -5,12 +5,12 @@
 {% block body %}
   {% if app.user %}
     <div class="col-sm-12">
-        <div class="add_form col-sm-5">
-          {{ render(controller('WebsiteBundle:Video:add', { 'request': app.request })) }}
-        </div>
-
         <div class="add_form col-sm-7">
           {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
+        </div>
+        
+        <div class="add_form col-sm-5">
+          {{ render(controller('WebsiteBundle:Video:add', { 'request': app.request })) }}
         </div>
     </div>
   {% endif %}

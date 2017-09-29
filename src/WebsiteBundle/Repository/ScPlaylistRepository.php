@@ -17,4 +17,12 @@ class ScPlaylistRepository extends \Doctrine\ORM\EntityRepository
 
     return $qb->getQuery()->getResult();
   }
+  
+  public function findLastPlaylist() {
+    $qb = $this->createQueryBuilder('s');
+    $qb->setMaxResults( 1 );
+    $qb->orderBy('s.id', 'DESC');
+
+    return $qb->getQuery()->getSingleResult();
+  }
 }

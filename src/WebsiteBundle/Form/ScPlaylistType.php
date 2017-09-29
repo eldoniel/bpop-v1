@@ -17,11 +17,12 @@ class ScPlaylistType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-          ->add('title',  TextType::class, array(
+          ->add('title',    TextType::class, array(
             'required' => false
           ))
-          ->add('url',    TextareaType::class)
-          ->add('save',   SubmitType::class)
+          ->add('url',      TextareaType::class)
+          ->add('miniurl',  TextareaType::class)
+          ->add('save',     SubmitType::class)
         ;
     }
 

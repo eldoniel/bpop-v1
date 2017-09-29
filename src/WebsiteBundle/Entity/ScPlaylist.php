@@ -35,6 +35,13 @@ class ScPlaylist
      */
     private $url;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="miniurl", type="text")
+     */
+    private $miniurl;
+
 
     /**
      * Get id
@@ -92,5 +99,29 @@ class ScPlaylist
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set miniurl
+     *
+     * @param string $miniurl
+     *
+     * @return ScPlaylist
+     */
+    public function setMiniurl($miniurl)
+    {
+        $this->miniurl = $miniurl;
+
+        return $this;
+    }
+
+    /**
+     * Get miniurl
+     *
+     * @return string
+     */
+    public function getMiniurl()
+    {
+        return $this->miniurl;
     }
 }
