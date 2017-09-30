@@ -3,15 +3,38 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title col-sm-11" id="deleteModalLabel">Supprimer une news</h4>
+          <button type="button" class="close col-sm-1" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Êtes-vous sûr de vouloir supprimer cette news? Ceci est irréversible.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <a class="btn btn-danger" href="{{ path('news_delete', { 'id': lastAdvert.id } ) }}" >
+            Supprimer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   {% if app.user %}
     <div class="col-sm-12">
-        <div class="add_form col-sm-7">
-          {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
-        </div>
+      <div class="add_form col-sm-7">
+        {{ render(controller('WebsiteBundle:News:add', { 'request': app.request })) }}
+      </div>
         
-        <div class="add_form col-sm-5">
-          {{ render(controller('WebsiteBundle:Video:add', { 'request': app.request })) }}
-        </div>
+      <div class="add_form col-sm-5">
+        {{ render(controller('WebsiteBundle:Video:add', { 'request': app.request })) }}
+      </div>
     </div>
   {% endif %}
   
@@ -19,7 +42,16 @@
 
   <table class="table">
     <tr>
-      <th>Dernière news</th>
+      <th>
+        {% if app.user %}
+          <span class="col-sm-11" >Dernière news</span>
+          <a class="col-sm-1" href="#deleteModal" data-toggle="modal" data-target="#deleteModal">
+            <i class="fa fa-close icon-red"></i>
+          </a>
+        {% else %}
+          Dernière news
+        {% endif %}
+      </th>
     </tr>
     <tr>
       <td>

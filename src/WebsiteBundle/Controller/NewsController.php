@@ -86,6 +86,24 @@ class NewsController extends Controller
       'form' => $form->createView(),
     ));
   }
+  
+  /**
+   * @Route("/news/delete/{id}", name="news_delete")
+   */
+  public function deleteAction($id)
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Advert');
+    
+    $advert = $repository->find($id);
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($advert);
+    $em->flush();
+
+    return $this->redirectToRoute('news_index');
+  }
 
   public function getSubscribers() {
     $repository = $this->getDoctrine()

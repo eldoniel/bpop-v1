@@ -6800,6 +6800,14 @@ body {
   padding: 4px;
 }
 
+.icon-red {
+  color: darkred;
+}
+
+.icon-red:hover {
+  color: red;
+}
+
 .links {
   margin: 5px;
 }
