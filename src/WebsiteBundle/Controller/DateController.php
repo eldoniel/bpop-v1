@@ -110,7 +110,8 @@ class DateController extends Controller
              ->setBody(
                $this->renderView(
                  'WebsiteBundle:Emails:newdate.html.twig', array(
-                     'date' => $date
+                  'date' => $date,
+                  'id' => $subscriber->getId()
                  )
                ),
                'text/html'

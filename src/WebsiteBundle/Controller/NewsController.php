@@ -68,7 +68,8 @@ class NewsController extends Controller
                 // app/Resources/views/Emails/registration.html.twig
                 'WebsiteBundle:Emails:newsletter.html.twig',
                 array(
-                  'type' => 'news'
+                  'type' => 'news',
+                  'id' => $subscriber->getId()
                   )
               ),
               'text/html'

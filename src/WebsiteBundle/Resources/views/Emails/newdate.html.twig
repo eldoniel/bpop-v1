@@ -21,3 +21,6 @@ Ville: {{ date.city }}<br/>
 <br/>
 A très bientôt sur le <a href="{{ url('date_index') }}" >site</a>,<br/>
 B!pop
+
+<h5>Vous ne désirez plus recevoir cette newsletter? 
+Cliquez <a href="{{ url('subscription_delete', { 'id': id }) }}" >ici</a> pour annuler votre abonnement.</h5>

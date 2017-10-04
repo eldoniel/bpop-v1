@@ -56,7 +56,8 @@ class SubscriptionController extends Controller
               array(
                 'news' => $subscription->getNews(),
                 'music' => $subscription->getMusic(),
-                'dates' => $subscription->getDates()
+                'dates' => $subscription->getDates(),
+                'id' => $subscription->getId()
                 )
             ),
             'text/html'
@@ -72,6 +73,34 @@ class SubscriptionController extends Controller
     return $this->render('WebsiteBundle:Subscription:add.html.twig', array(
       'form' => $form->createView(),
     ));
+  }
+  
+  /**
+   * @Route("/subscription/delete/{id}", name="subscription_delete")
+   */
+  public function deleteAction($id)
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Subscription');
+    
+    $advert = $repository->find($id);
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($advert);
+    $em->flush();
+
+    return $this->redirectToRoute('subscription_remove_confirm');
+  }
+
+  /**
+   * @Route("/subscription/remove/confirm", name="subscription_remove_confirm")
+   */
+  public function removeConfirmAction()
+  {
+    return $this->render(
+      'WebsiteBundle:Subscription:remove_confirm.html.twig'
+    );
   }
 
   private function sendMail($mail, $mailer)

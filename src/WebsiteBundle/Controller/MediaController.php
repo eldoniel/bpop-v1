@@ -153,7 +153,8 @@ class MediaController extends Controller
                 // app/Resources/views/Emails/registration.html.twig
                 'WebsiteBundle:Emails:newsletter.html.twig',
                 array(
-                  'type' => 'music'
+                  'type' => 'music',
+                  'id' => $subscriber->getId()
                 )
               ),
               'text/html'
