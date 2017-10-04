@@ -1,0 +1,27 @@
+{% extends "WebsiteBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block body %}
+  {% if app.user %}
+    <table class="table">
+      <tr>
+        <th>Êtes-vous sûr de vouloir supprimer cette playlist?</th>
+      </tr>
+      <tr>
+        <td>
+          {% if playlist.title %}
+            <h4 class="article_title">{{ playlist.title }}</h4>
+          {% endif %}
+          {{ playlist.url | raw }}
+        </td>
+      </tr>
+    </table>
+
+    <div class="col-sm-8"></div>
+    <div class="col-sm-4 form-group">
+      <a class="btn btn-default" href="{{ path('media_show') }}" >Annuler</a>
+      <a class="btn btn-danger" href="{{ path('media_delete', { 'id': playlist.id }) }}" >Supprimer</a>
+    </div>
+  {% endif %}
+{% endblock %}

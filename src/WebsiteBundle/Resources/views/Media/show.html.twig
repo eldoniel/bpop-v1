@@ -19,7 +19,12 @@
           {% if playlist.title %}
             <h4 class="article_title">{{ playlist.title }}</h4>
           {% endif %}
-          {{ playlist.url | raw }}
+          <div class="col-sm-11">
+            {{ playlist.url | raw }}
+          </div>
+          <a class="col-sm-1" href="{{ path('media_delete_show', { 'id': playlist.id }) }}">
+            <i class="fa fa-close icon-red"></i>
+          </a>
         </td>
       </tr>
     {% else %}

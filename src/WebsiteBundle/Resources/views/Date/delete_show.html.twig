@@ -4,16 +4,11 @@
 
 {% block body %}
   {% if app.user %}
-    <div class="add_form">
-      {{ render(controller('WebsiteBundle:Date:add', { 'request': app.request })) }}
-    </div>
-  {% endif %}
 
-  <table class="table">
-    <tr>
-      <th>Toutes les dates à venir</th>
-    </tr>
-    {% for date in dates %}
+    <table class="table">
+      <tr>
+        <th>Êtes-vous sûr de vouloir supprimer cette date?</th>
+      </tr>
       <tr>
         <td>
           <div class="col-sm-4">
@@ -25,11 +20,11 @@
           </div>
           <div class="col-sm-6">
             <h4 class="article_title">{{ date.eventName }}</h4>
-              Date: {{ date.dateShow|date('d/m/Y') }}<br/>
-              Heure de début: {{ date.dateShow|date('H:i:s') }}<br/>
-              Ville: {{ date.city }}<br/>
-              {% if date.room %}
-                <span>Salle: {{ date.room }}<br/>
+            Date: {{ date.dateShow|date('d/m/Y') }}<br/>
+            Heure de début: {{ date.dateShow|date('H:i:s') }}<br/>
+            Ville: {{ date.city }}<br/>
+            {% if date.room %}
+              <span>Salle: {{ date.room }}<br/>
               {% endif %}
               {% if date.otherBands %}
                 Avec: {{ date.otherBands }}<br/>
@@ -41,19 +36,14 @@
                 <a target="_blank" href="{{ date.sellersLink }}" class="text-link">Billetterie</a><br/>
               {% endif %}
           </div>
-          <div class="col-sm-2">
-            <a href="{{ path('date_delete_show', { 'id': date.id }) }}">
-              <i class="fa fa-close icon-red"></i>
-            </a>
-          </div>
         </td>
       </tr>
-    {% else %}
-      <tr>
-        <td>
-          Il n'y a aucune date prévue pour le moment.
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+    </table>
+          
+    <div class="col-sm-8"></div>
+    <div class="col-sm-4 form-group">
+      <a class="btn btn-default" href="{{ path('date_show') }}" >Annuler</a>
+      <a class="btn btn-danger" href="{{ path('date_delete', { 'id': date.id }) }}" >Supprimer</a>
+    </div>
+  {% endif %}
 {% endblock %}

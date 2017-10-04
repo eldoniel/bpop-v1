@@ -37,6 +37,23 @@ class DateController extends Controller
   }
 
   /**
+  * @Route("/date/delete/show/{id}", name="date_delete_show")
+  */
+  public function deleteShowAction($id)
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Date');
+
+    $date = $repository->find($id);
+
+    return $this->render(
+      'WebsiteBundle:Date:delete_show.html.twig',
+      array('date' => $date)
+    );
+  }
+
+  /**
    * @Route("/date/next", name="date_next")
    */
   public function nextAction()
@@ -111,6 +128,24 @@ class DateController extends Controller
        'form' => $form->createView(),
      ));
    }
+  
+  /**
+   * @Route("/date/delete/{id}", name="date_delete")
+   */
+  public function deleteAction($id)
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:Date');
+    
+    $advert = $repository->find($id);
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($advert);
+    $em->flush();
+
+    return $this->redirectToRoute('date_index');
+  }
 
    public function getSubscribers() {
      $repository = $this->getDoctrine()

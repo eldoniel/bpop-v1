@@ -39,6 +39,23 @@ class MediaController extends Controller
   }
 
   /**
+  * @Route("/media/delete/show/{id}", name="media_delete_show")
+  */
+  public function deleteShowAction($id)
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:ScPlaylist');
+
+    $playlist = $repository->find($id);
+
+    return $this->render(
+      'WebsiteBundle:Media:delete_show.html.twig',
+      array('playlist' => $playlist)
+    );
+  }
+
+  /**
    * @Route("/media/latest", name="media_latest")
    */
   public function latestAction()
@@ -153,6 +170,24 @@ class MediaController extends Controller
     return $this->render('WebsiteBundle:Media:addScPlaylist.html.twig', array(
       'form' => $form->createView(),
     ));
+  }
+  
+  /**
+   * @Route("/media/delete/{id}", name="media_delete")
+   */
+  public function deleteAction($id)
+  {
+    $repository = $this->getDoctrine()
+      ->getManager()
+      ->getRepository('WebsiteBundle:ScPlaylist');
+    
+    $advert = $repository->find($id);
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($advert);
+    $em->flush();
+
+    return $this->redirectToRoute('media_index');
   }
 
   public function getSubscribers() {
